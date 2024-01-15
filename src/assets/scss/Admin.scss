@@ -1,0 +1,74 @@
+aside.ant-layout-sider.ant-layout-sider-dark {
+  background: white;
+}
+
+.ant-layout {
+  height: 100vh;
+
+  .ant-dropdown-trigger {
+    .ant-space {
+      .ant-space-item {
+        font-size: 15px;
+      }
+    }
+  }
+  .sidebar-admin_title {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    .ant-layout-sider-children {
+      .ant-menu {
+        .ant-menu-item {
+          height: 50px;
+          svg {
+            width: 2em;
+            height: 2em;
+          }
+        }
+      }
+    }
+  }
+}
+.ant-dropdown {
+  .ant-dropdown-menu {
+    .ant-dropdown-menu-title-content {
+      font-size: 15px;
+    }
+  }
+}
+.ant-menu-inline.ant-menu-root .ant-menu-item > .ant-menu-title-content {
+  font-size: 15px;
+}
+.ant-menu {
+  .ant-menu-item {
+    height: 40px;
+    margin-bottom: 5px;
+    .ant-menu-item-icon {
+      font-size: 16px;
+    }
+  }
+}
+
+.ant-menu-light.ant-menu-inline .ant-menu-item {
+  gap: 5px;
+}
+.ant-menu-inline.ant-menu-root {
+  .ant-menu-submenu {
+    margin: 5px 0px;
+    .ant-menu-submenu-title {
+      height: 55px;
+      > .ant-menu-title-content {
+        font-size: 16px;
+      }
+    }
+  }
+}
+.ant-menu .ant-menu-submenu-title .ant-menu-item-icon {
+  font-size: 16px;
+}
+.ant-table-wrapper .ant-table-pagination.ant-pagination {
+  margin: 16px 15px;
+}
