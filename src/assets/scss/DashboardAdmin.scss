@@ -1,0 +1,19 @@
+.container-dashboard {
+  padding: 20px;
+  .div-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    .count {
+      display: block;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    .tag {
+      display: block;
+      font-size: 25px;
+      color: #bdbdbd;
+    }
+  }
+}
