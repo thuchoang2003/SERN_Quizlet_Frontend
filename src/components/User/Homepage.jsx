@@ -18,6 +18,7 @@ import imageComment2 from "../../assets/images/imageComment2.avif";
 import imageComment1 from "../../assets/images/imageComment1.avif";
 import imageComment3 from "../../assets/images/imageComment3.avif";
 import imageTeacher from "../../assets/images/imageTeacher.avif";
+import homepage from "../../assets/images/homepage.jpg";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 const Homepage = (props) => {
@@ -28,6 +29,7 @@ const Homepage = (props) => {
         style={{ margin: "0 auto", paddingTop: "10px" }}
       >
         <div className="div-image">
+          <img src={homepage} alt="" />
           <div className="div-text">
             <div className="div-text__one">
               <h2>Thẻ ghi nhớ kỹ thuật số và các công cụ học tốt nhất</h2>

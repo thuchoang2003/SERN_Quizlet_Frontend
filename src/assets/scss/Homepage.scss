@@ -3,10 +3,19 @@
   .div-image {
     width: 100%;
     height: 700px;
-    background-image: url("../images/homepage.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
+    // background-image: url("../images/homepage.jpg");
+    // background-position: center center;
+    // background-repeat: no-repeat;
     position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      object-fit: cover;
+      object-position: center;
+    }
     .div-text {
       position: absolute;
       width: 40%;

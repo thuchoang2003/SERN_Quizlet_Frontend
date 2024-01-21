@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   DownOutlined,
   SmileOutlined,
@@ -9,6 +10,7 @@ import { Dropdown, Space, Row, Col, Button, Input } from "antd";
 import "../../assets/scss/HeaderHomepage.scss";
 
 const HeaderHomepage = (props) => {
+  const navigate = useNavigate();
   const itemsDropdownTest = [
     {
       key: "1",
@@ -107,6 +109,9 @@ const HeaderHomepage = (props) => {
                   borderRadius: "10px",
                   fontWeight: 500,
                   fontSize: "15px",
+                }}
+                onClick={() => {
+                  navigate("/login");
                 }}
               >
                 Đăng nhập

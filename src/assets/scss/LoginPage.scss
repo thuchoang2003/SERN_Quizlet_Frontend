@@ -1,0 +1,69 @@
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  .login-left {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      object-fit: cover;
+      object-position: center;
+    }
+    .login-left__text {
+      position: absolute;
+      width: 40%;
+      height: fit-content;
+      left: 5%;
+      top: 10%;
+      .title {
+        position: absolute;
+        font-size: 40px;
+        color: black;
+        font-weight: 600;
+      }
+    }
+    .logo {
+      position: absolute;
+      bottom: 7%;
+      left: 10%;
+      font-size: 50px;
+      color: white;
+      font-weight: 500;
+    }
+  }
+  .login-right {
+    width: 50%;
+    height: 100%;
+    padding: 0px auto;
+    .div-login {
+      padding: 50px 130px;
+      .div-threeBtn {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 40px 0px;
+        gap: 20px;
+        .item {
+          width: 100%;
+          height: 60px;
+          font-size: 17px;
+          font-weight: 500;
+          border: 2px solid #cccc;
+          color: #586380;
+          border-radius: "10px";
+        }
+      }
+      .divider {
+      }
+    }
+  }
+}
+.ant-btn:hover {
+  background-color: #f6f7fb;
+}
