@@ -10,18 +10,22 @@ import { Dropdown, Space, Row, Col, Button, Input } from "antd";
 import imageRemember from "../../assets/images/imageRemember.jpg";
 import imageMobile from "../../assets/images/imageMobile.jpg";
 import imageTest from "../../assets/images/imageTest.jpg";
+import imageTest2 from "../../assets/images/imageTest2.avif";
 import Learn from "../../assets/images/Learn.svg";
 import Test from "../../assets/images/Test.svg";
 import Loh from "../../assets/images/Loh.svg";
 import anhToan from "../../assets/images/anhToan.jpg";
+import anhToan2 from "../../assets/images/anhToan2.avif";
 import imageComment2 from "../../assets/images/imageComment2.avif";
 import imageComment1 from "../../assets/images/imageComment1.avif";
 import imageComment3 from "../../assets/images/imageComment3.avif";
 import imageTeacher from "../../assets/images/imageTeacher.avif";
 import homepage from "../../assets/images/homepage.jpg";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { useNavigate } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 const Homepage = (props) => {
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -43,7 +47,11 @@ const Homepage = (props) => {
               </span>
             </div>
             <div className="div-text__btn">
-              <Button style={{ width: "170px", height: "50px" }} type="primary">
+              <Button
+                style={{ width: "170px", height: "50px" }}
+                type="primary"
+                onClick={() => navigate("/login")}
+              >
                 <span>Đăng ký miễn phí</span>
               </Button>
             </div>
@@ -71,7 +79,11 @@ const Homepage = (props) => {
               </span>
             </div>
             <div className="div-text__btn">
-              <Button style={{ width: "140px", height: "60px" }} type="primary">
+              <Button
+                style={{ width: "140px", height: "60px" }}
+                type="primary"
+                onClick={() => navigate("/login")}
+              >
                 <span>Bắt đầu</span>
               </Button>
             </div>
@@ -145,13 +157,17 @@ const Homepage = (props) => {
               </div>
             </div>
             <div className="btn">
-              <Button style={{ width: "260px", height: "60px" }} type="primary">
+              <Button
+                style={{ width: "260px", height: "60px" }}
+                type="primary"
+                onClick={() => navigate("/login")}
+              >
                 <span>Thử miễn phí Học và Kiểm tra</span>
               </Button>
             </div>
           </div>
           <div className="div-LearnAndTest_right">
-            <img src={imageTest} alt="" />
+            <img src={imageTest2} alt="" />
           </div>
         </div>
         <div className="div-Math">
@@ -206,13 +222,17 @@ const Homepage = (props) => {
               </div>
             </div>
             <div className="btn">
-              <Button style={{ width: "260px", height: "60px" }} type="primary">
+              <Button
+                style={{ width: "260px", height: "60px" }}
+                type="primary"
+                onClick={() => navigate("/login")}
+              >
                 <span>Khám phá lời giải miễn phí</span>
               </Button>
             </div>
           </div>
           <div className="div-Math_right">
-            <img src={anhToan} alt="" />
+            <img src={anhToan2} alt="" />
           </div>
         </div>
         <div className="div-Title">
@@ -278,19 +298,23 @@ const Homepage = (props) => {
               </span>
             </div>
             <div className="div-text__btn">
-              <Button style={{ width: "240px", height: "60px" }} type="primary">
+              <Button
+                style={{ width: "240px", height: "60px" }}
+                type="primary"
+                onClick={() => navigate("/login")}
+              >
                 <span>Lập tài khoản miễn phí</span>
               </Button>
             </div>
           </div>
         </div>
-        <Footer
+        {/* <Footer
           style={{
             textAlign: "center",
           }}
         >
           Ant Design ©{new Date().getFullYear()} Created by ThucHoang2003
-        </Footer>
+        </Footer> */}
       </div>
     </>
   );

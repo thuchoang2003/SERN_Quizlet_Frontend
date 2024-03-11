@@ -1,24 +1,79 @@
 import "../assets/scss/LoginPage.scss";
 import ImageLogin from "../assets/images/ImageLogin.png";
 import React from "react";
-import { GoogleOutlined, FacebookFilled, AppleFilled } from "@ant-design/icons";
-import { Dropdown, Space, Row, Col, Button, Input, Divider, Form } from "antd";
+import {
+  GoogleOutlined,
+  FacebookFilled,
+  AppleFilled,
+  CloseOutlined,
+} from "@ant-design/icons";
+import {
+  Dropdown,
+  Space,
+  Row,
+  Col,
+  Button,
+  Input,
+  Divider,
+  Form,
+  message,
+} from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createNewUser } from "../apiService/user.service";
+import { postLogin } from "../apiService/auth.service";
+import { useDispatch } from "react-redux";
+import { doLogin } from "../redux/counter/accountSlice";
+import { getLesson } from "../redux/counter/lessonSlice";
+import { getAllLessonByUserId } from "../apiService/lesson.service";
 const Login = (props) => {
   const [openLogin, setOpenLogin] = useState(true);
   const [openRegister, setOpenRegister] = useState(false);
   const [form] = Form.useForm();
-  const onFinish = (value) => {
-    console.log(value);
+  const navigate = useNavigate();
+  const dispath = useDispatch();
+  const onFinish = async (value) => {
+    const { Email, Password } = value;
+    const response = await postLogin(Email, Password);
+    if (response && response.data) {
+      message.success("Đăng nhập thành công !");
+      localStorage.setItem("access_token", response.token.access.token);
+      localStorage.setItem("refresh_token", response.token.refresh.token);
+      dispath(doLogin(response.data));
+      const result = await getLessonByUserID(response.data.id);
+      dispath(getLesson(result));
+      // if (response.data.role === "Admin") navigate("/admin");
+      // else navigate("/home");
+      navigate("/home");
+    } else message.error("Đăng nhập thất bại. Hãy thử lại !");
   };
   const onFinishFailed = (error) => {
     console.log(error);
   };
-  const onFinishRegister = (value) => {
+  const onFinishRegister = async (value) => {
     console.log(value);
+    const { email, username, password } = value;
+    const role = "User";
+    const response = await createNewUser(email, password, username, role);
+    if (response && response.data) {
+      message.success("Đăng ký tài khoản thành công !");
+      setTimeout(() => {
+        setOpenLogin(true);
+        setOpenRegister(false);
+      }, 1000);
+    } else if (response.message === "Email is existed!") {
+      message.error("Email đã tồn tại. Hãy thử lại !");
+    } else message.error("Đăng ký tài khoản thất bại. Hãy thử lại !");
   };
   const onFinishFailedRegister = (error) => {
     console.log(error);
+  };
+
+  const getLessonByUserID = async (id) => {
+    const result = await getAllLessonByUserId(id);
+    if (result && result.data.length > 0) {
+      return result.data;
+    } else return [];
   };
 
   return (
@@ -35,6 +90,16 @@ const Login = (props) => {
           {openLogin && (
             <>
               <div className="div-login">
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <Button
+                    icon={<CloseOutlined style={{ fontSize: "20px" }} />}
+                    type="text"
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                  />
+                </div>
+
                 <div
                   style={{
                     display: "flex",
@@ -125,7 +190,7 @@ const Login = (props) => {
                   >
                     <Form.Item label="Email" name="Email">
                       <Input
-                        placeholder="Nhập địa chỉ Email của bạn"
+                        placeholder="Nhập địa chỉ email của bạn"
                         rules={[
                           {
                             required: true,
@@ -145,15 +210,14 @@ const Login = (props) => {
                       />
                     </Form.Item>
                     <Form.Item label="Password" name="Password">
-                      <Input
-                        placeholder="Nhập địa chỉ  mật khẩu của bạn"
+                      <Input.Password
+                        placeholder="Nhập địa chỉ mật khẩu của bạn"
                         rules={[
                           {
                             required: true,
                             message: "Hãy nhập mật khẩu",
                           },
                         ]}
-                        type="password"
                         style={{
                           height: "50px",
                           backgroundColor: "#f6f7fb",
@@ -163,7 +227,12 @@ const Login = (props) => {
                         }}
                       />
                     </Form.Item>
-                    <div style={{ height: "70px", padding: "0px 100px" }}>
+                    <div
+                      style={{
+                        height: "70px",
+                        padding: "0px 30px",
+                      }}
+                    >
                       <span style={{ textAlign: "center", display: "block" }}>
                         Bằng cách nhấp Đăng nhập, bạn chấp nhận{" "}
                         <a href="">Điều khoản dịch vụ</a> Và{" "}
@@ -213,6 +282,15 @@ const Login = (props) => {
           {openRegister && (
             <>
               <div className="div-login">
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <Button
+                    icon={<CloseOutlined style={{ fontSize: "20px" }} />}
+                    type="text"
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                  />
+                </div>
                 <div
                   style={{
                     display: "flex",
@@ -287,15 +365,18 @@ const Login = (props) => {
                     layout="vertical"
                     // size="large"
                   >
-                    <Form.Item label="Email" name="Email">
+                    <Form.Item
+                      label="Email"
+                      name="email"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Hãy nhập địa chỉ Email",
+                        },
+                      ]}
+                    >
                       <Input
                         placeholder="Nhập địa chỉ Email của bạn"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Hãy nhập địa chỉ Email",
-                          },
-                        ]}
                         initialValues={{
                           layout: "vertical",
                         }}
@@ -306,17 +387,21 @@ const Login = (props) => {
                           fontWeight: 700,
                           borderRadius: "10px",
                         }}
+                        type="email"
                       />
                     </Form.Item>
-                    <Form.Item label="Tên người dùng" name="username">
+                    <Form.Item
+                      label="Tên người dùng"
+                      name="username"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Hãy nhập tên người dùng",
+                        },
+                      ]}
+                    >
                       <Input
-                        placeholder="Nhập địa chỉ tên của bạn"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Hãy nhập tên người dùng",
-                          },
-                        ]}
+                        placeholder="Nhập tên của bạn"
                         style={{
                           height: "50px",
                           backgroundColor: "#f6f7fb",
@@ -326,16 +411,19 @@ const Login = (props) => {
                         }}
                       />
                     </Form.Item>
-                    <Form.Item label="Mật khẩu" name="password">
-                      <Input
-                        placeholder="Nhập địa chỉ  mật khẩu của bạn"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Hãy nhập mật khẩu",
-                          },
-                        ]}
-                        type="password"
+                    <Form.Item
+                      label="Mật khẩu"
+                      name="password"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Hãy nhập mật khẩu",
+                        },
+                      ]}
+                    >
+                      <Input.Password
+                        placeholder="Nhập mật khẩu của bạn"
+                        // type="password"
                         style={{
                           height: "50px",
                           backgroundColor: "#f6f7fb",

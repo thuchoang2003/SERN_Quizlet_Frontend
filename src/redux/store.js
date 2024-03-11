@@ -11,15 +11,19 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-
+import accountSlice from "./counter/accountSlice";
+import lessonSlice from "./counter/lessonSlice";
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: ["account"],
+  // blacklist: ["account"],
 };
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  account: accountSlice,
+  lesson: lessonSlice,
+});
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({

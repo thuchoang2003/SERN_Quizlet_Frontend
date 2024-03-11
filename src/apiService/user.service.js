@@ -30,10 +30,15 @@ const updateUser = (id, fullname, image, role) => {
   const response = instance.put(`users/update/${id}`, data);
   return response;
 };
+const getUserByID = (id) => {
+  const response = instance.get(`users/getUserById/${id}`);
+  return response;
+};
 export {
   getAllUser,
   createNewUser,
   getAllUserWithPaginate,
   deleteUser,
   updateUser,
+  getUserByID,
 };

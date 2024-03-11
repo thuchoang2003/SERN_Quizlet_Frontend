@@ -81,6 +81,24 @@ const createMultipleVocabulary = async (vocabularies) => {
     throw error;
   }
 };
+const createVocabulary = async (value_en, value_vi, lessonId) => {
+  try {
+    const data = {
+      value_en: value_en,
+      value_vi: value_vi,
+      lessonId: lessonId,
+    };
+    const response = await instance.post(`vocabulary/create`, data);
+    if (response) {
+      return response;
+    } else {
+      throw new Error("Failed to update a vocabulary");
+    }
+  } catch (error) {
+    console.error("Error in update a vocabulary:", error.message);
+    throw error;
+  }
+};
 
 export {
   getAllVocabulary,
@@ -88,4 +106,5 @@ export {
   deleteVocabulary,
   updateVocabulary,
   createMultipleVocabulary,
+  createVocabulary,
 };

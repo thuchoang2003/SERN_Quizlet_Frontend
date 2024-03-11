@@ -1,0 +1,73 @@
+.main-container {
+  max-width: 1440px;
+  margin: 0px 5% 0 5%;
+  padding-top: 40px;
+  //   background-color: "#f6f7fb";
+  .title {
+    font-size: 1.3rem;
+  }
+  .divContentUpdate {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    background-color: #f6f7fb;
+    .divContentUpdate-item {
+      width: 32%;
+      height: 100%;
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+      cursor: pointer;
+      z-index: 3;
+      .divContentUpdate-item__img {
+        height: 65%;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        img {
+          width: 100%;
+          border-top-left-radius: 1.5rem;
+          border-top-right-radius: 1.5rem;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          right: 0;
+          object-fit: cover;
+          object-position: center;
+          z-index: 1;
+        }
+      }
+      .divContentUpdate-item__text {
+        height: 35%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 24px 16px 24px 16px;
+        box-sizing: border-box;
+        row-gap: 10px;
+        border-bottom-left-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+        z-index: 2;
+        .Label {
+          font-size: 1rem;
+          font-weight: 700;
+        }
+        .content {
+          font-size: 0.9rem;
+          font-weight: 1;
+        }
+      }
+    }
+    .divContentUpdate-item:hover {
+      background-color: #ffdc62;
+      position: relative;
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+      border-bottom-left-radius: 1.5rem;
+      border-bottom-right-radius: 1.5rem;
+      transition: background-color 0.1s ease-in-out;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "antd";
 import {
   TeamOutlined,
@@ -7,7 +7,30 @@ import {
   HeartOutlined,
 } from "@ant-design/icons";
 import "../../assets/scss/DashboardAdmin.scss";
+import { getAllUser } from "../../apiService/user.service";
+import { getAllLessons } from "../../apiService/lesson.service";
+import { getAllVocabulary } from "../../apiService/vocabulary.service";
 const Dashboard = () => {
+  const [userInformation, setUserInformation] = useState();
+  const [lessonInformation, setLessonInformation] = useState();
+  const [vocabulariesInformation, setVocabulariesInformation] = useState();
+  const fetchAPIData = async () => {
+    try {
+      const [userData, lessonData, vocabularies] = await Promise.all([
+        getAllUser(),
+        getAllLessons(),
+        getAllVocabulary(),
+      ]);
+      setUserInformation(userData.data);
+      setLessonInformation(lessonData);
+      setVocabulariesInformation(vocabularies);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAPIData();
+  }, []);
   return (
     <>
       <div className="container-dashboard">
@@ -16,7 +39,7 @@ const Dashboard = () => {
             <Card>
               <div className="div-card">
                 <div>
-                  <span className="count">100</span>
+                  <span className="count">{userInformation?.length}</span>
                   <span className="tag">Users</span>
                 </div>
 
@@ -28,7 +51,7 @@ const Dashboard = () => {
             <Card>
               <div className="div-card">
                 <div>
-                  <span className="count">100</span>
+                  <span className="count">{lessonInformation?.length}</span>
                   <span className="tag">Lessons</span>
                 </div>
                 <StockOutlined style={{ fontSize: "50px", color: "#fa556f" }} />
@@ -39,7 +62,9 @@ const Dashboard = () => {
             <Card>
               <div className="div-card">
                 <div>
-                  <span className="count">100</span>
+                  <span className="count">
+                    {vocabulariesInformation?.length}
+                  </span>
                   <span className="tag">Vocabularies</span>
                 </div>
                 <HeartOutlined style={{ fontSize: "50px", color: "#fa556f" }} />

@@ -163,10 +163,7 @@ const ManageUser = (props) => {
         return imageAuthorize.includes(record.image) ? (
           <Avatar size="large" icon={<UserOutlined />} />
         ) : (
-          <Avatar
-            size="large"
-            icon={<img src={`data:image/png;base64, ${record.image}`} />}
-          />
+          <Avatar size="large" src={record.image} />
         );
       },
     },
@@ -176,7 +173,6 @@ const ManageUser = (props) => {
       key: "fullname",
       sorter: true,
     },
-
     {
       title: "Email",
       dataIndex: "email",

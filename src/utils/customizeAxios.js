@@ -8,9 +8,12 @@ const instance = axios.create({
   withCredentials: true,
 });
 const handleRefreshToken = async () => {
-  let response = await instance.get("/auth/refresh");
-  if (response && response.data) {
-    return response.data.access_token;
+  const refreshToken = localStorage.getItem("refresh_token");
+  let response = await instance.post("/auth/refresh", {
+    refreshToken: refreshToken,
+  });
+  if (response) {
+    return response.token.access.token;
   } else return null;
 };
 instance.defaults.headers.common = {
@@ -19,7 +22,8 @@ instance.defaults.headers.common = {
 instance.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    // config.headers["Authorization"] = "Bearer " + access_token;
+    config.headers["Authorization"] =
+      "Bearer " + localStorage.getItem("access_token");
     NProgress.start();
     return config;
   },
@@ -45,16 +49,16 @@ instance.interceptors.response.use(
     NProgress.done();
     const status = error.response ? error.response.status : null;
 
-    if (status === 401 && !error.config.headers[NO_RETRY_HEADER]) {
-      const access_token = await handleRefreshToken();
-      error.config.headers[NO_RETRY_HEADER] = "true";
-      error.config.headers["Authorization"] = "Bearer " + access_token;
-      localStorage.setItem("access_token", access_token);
-      return instance.request(error.config);
-    }
-    if (status === 400 && error.config.url === "/api/v1/auth/refresh") {
-      window.location.href = "/login";
-    }
+    // if (status === 401 && !error.config.headers[NO_RETRY_HEADER]) {
+    //   const access_token = await handleRefreshToken();
+    //   error.config.headers[NO_RETRY_HEADER] = "true";
+    //   error.config.headers["Authorization"] = "Bearer " + access_token;
+    //   localStorage.setItem("access_token", access_token);
+    //   return instance.request(error.config);
+    // }
+    // if (status === 400 && error.config.url === "/api/v1/auth/refresh") {
+    //   window.location.href = "/login";
+    // }
 
     return error && error.response && error.response.data
       ? error.response.data

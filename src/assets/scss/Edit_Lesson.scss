@@ -1,0 +1,183 @@
+.container_editLesson {
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 60px 20px 0px 20px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .item_1 {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      span {
+        font-size: 1rem;
+        color: #4255ff;
+      }
+    }
+  }
+  .title {
+    margin-top: 30px;
+    width: 100%;
+    height: 50px;
+    padding: 0;
+  }
+  .div-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    .btnItem_add {
+      border: 2px solid #cccc;
+      background-color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      height: 40px;
+      width: 110px;
+      color: #586380;
+      display: flex;
+      align-items: center;
+    }
+    .btnItem_add:hover {
+      background-color: #f6f7fb;
+    }
+    .btnItem_setting {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #cccc;
+    }
+  }
+  .container-listVocabularies {
+    .item {
+      width: 100%;
+      height: 150px;
+      padding: 10px 0px;
+      background-color: white;
+      margin-top: 30px;
+      border-radius: 10px;
+      .header {
+        padding: 0px 20px;
+        height: 40px;
+        .index {
+          color: #939bb4;
+          font-size: 19px;
+        }
+      }
+      .partition {
+        width: 100%;
+        height: 2px;
+        background-color: #cccc;
+        margin-top: 10px;
+      }
+      .content {
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 30px;
+        margin-top: 25px;
+        .left {
+          width: 50%;
+          .inputText {
+            width: 100%;
+            height: 24px;
+          }
+          .divider {
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin: 5px 0px 10px 0px;
+          }
+          .footer {
+            color: #939bb4;
+            font-size: 14px;
+          }
+          .inputText:hover + .divider {
+            background-color: #ffcd1f;
+            height: 3px;
+          }
+        }
+        .right {
+          width: 50%;
+          .inputText {
+            width: 100%;
+            height: 24px;
+          }
+          .divider {
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin: 5px 0px 10px 0px;
+          }
+          .footer {
+            color: #939bb4;
+            font-size: 14px;
+          }
+          .inputText:hover + .divider {
+            background-color: #ffcd1f;
+            height: 3px;
+          }
+        }
+      }
+    }
+    .ant-input {
+      padding: 0px !important;
+    }
+  }
+  .div-AddCard {
+    width: 100%;
+    height: 120px;
+    background-color: white;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    .content {
+      width: 100px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      .text {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    }
+    .footer {
+      width: 100px;
+      height: 4px;
+      background-color: #4dcfc0;
+    }
+    .content:hover + .footer {
+      background-color: #ffcd1f;
+    }
+    .content:hover span {
+      color: #ffcd1f;
+    }
+  }
+  .divSubmit {
+    display: flex;
+    justify-content: flex-end;
+    padding: 50px 0px;
+    .btnSubmit {
+      width: 150px;
+      height: 50px;
+      border: 1px solid #cccc;
+      background-color: #4255ff;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 5px;
+    }
+    .btnSubmit:hover {
+      background-color: #2f43f1;
+    }
+  }
+}

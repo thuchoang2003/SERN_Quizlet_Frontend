@@ -4,7 +4,7 @@
   display: flex;
   .login-left {
     width: 50%;
-    height: 100%;
+    height: 905px;
     position: relative;
     img {
       width: 100%;
@@ -42,7 +42,7 @@
     height: 100%;
     padding: 0px auto;
     .div-login {
-      padding: 50px 130px;
+      padding: 20px 100px;
       .div-threeBtn {
         display: flex;
         flex-direction: column;
@@ -66,4 +66,18 @@
 }
 .ant-btn:hover {
   background-color: #f6f7fb;
+}
+#formRegister_password {
+  background-color: #f6f7fb;
+  height: "50px";
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+#formLogin_Password {
+  background-color: #f6f7fb;
+  height: "50px";
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
 }

@@ -89,6 +89,14 @@ const getAllLessonWithPaginate = async (
   );
   return res;
 };
+const getAllLessonByUserId = async () => {
+  const res = await instance.get("lesson/getAllLessonByUserId");
+  if (res) return res;
+};
+const getLessonByLessonId = async (id) => {
+  const res = await instance.get(`lesson/getLessonById/${id}`);
+  if (res) return res;
+};
 
 export {
   getAllLessons,
@@ -96,4 +104,6 @@ export {
   deleteALesson,
   updateALesson,
   getAllLessonWithPaginate,
+  getAllLessonByUserId,
+  getLessonByLessonId,
 };

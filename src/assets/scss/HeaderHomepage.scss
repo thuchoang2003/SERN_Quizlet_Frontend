@@ -1,7 +1,7 @@
 .header_Container {
   max-width: 1440px;
   margin: 0 auto;
-  height: 50px;
+  height: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,4 +56,10 @@
     align-items: center;
     gap: 10px;
   }
+}
+// span.ant-dropdown-menu-title-content {
+//   height: 50px;
+// }
+.ant-divider-horizontal {
+  margin: 10px 0px 5px 0px;
 }
