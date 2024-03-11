@@ -12,6 +12,7 @@ import {
   createVocabulary,
   updateVocabulary,
   deleteVocabulary,
+  createMultipleVocabulary,
 } from "../../apiService/vocabulary.service";
 import { updateALesson } from "../../apiService/lesson.service";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -38,14 +39,14 @@ const ListVocabularies = forwardRef((props, ref) => {
   };
   const [spinning, setSpinning] = useState(false);
   const handleSubmit = async () => {
-    console.log(ref.current.input.value);
     setSpinning(!spinning);
     const listDataOld = await getAllVocabularyByLessonID(dataLesson.id);
     if (listDataOld) {
+      console.log("check list Data Old", listDataOld);
+      console.log("check list data New", dataListVocabularies);
       // Lấy danh sách các id từ cả hai mảng
       const idsOld = listDataOld.map((item) => item.id);
       const idsNew = dataListVocabularies.map((item) => item.id);
-
       // Tìm các id cần xoá (có mặt trong listDataOld nhưng không có trong dataListVocabularies)
       const idsToDelete = idsOld.filter((id) => !idsNew.includes(id));
 
@@ -69,23 +70,37 @@ const ListVocabularies = forwardRef((props, ref) => {
           (item) => item.id === idToUpdate
         );
 
+        // Kiểm tra xem có phần tử tương ứng trong cả hai danh sách không
         if (indexInOld !== -1 && indexInNew !== -1) {
-          const { value_en, value_vi } = dataListVocabularies[indexInNew];
-          await updateVocabulary(idToUpdate, value_en, value_vi, dataLesson.id);
+          // Kiểm tra xem có sự thay đổi giữa giá trị cũ và mới không
+          if (
+            listDataOld[indexInOld].value_vi !==
+              dataListVocabularies[indexInNew].value_vi ||
+            listDataOld[indexInOld].value_en !==
+              dataListVocabularies[indexInNew].value_en
+          ) {
+            const { value_en, value_vi } = dataListVocabularies[indexInNew];
+            await updateVocabulary(
+              idToUpdate,
+              value_en,
+              value_vi,
+              dataLesson.id
+            );
+          }
         }
       }
-
-      // Thực hiện thêm mới
-      for (const idToCreate of idsToCreate) {
-        const indexInNew = dataListVocabularies.findIndex(
-          (item) => item.id === idToCreate
-        );
-
-        if (indexInNew !== -1) {
-          const { value_en, value_vi } = dataListVocabularies[indexInNew];
-          await createVocabulary(value_en, value_vi, dataLesson.id);
+      let dataTmp = [];
+      for (const item of dataListVocabularies) {
+        if (item.id === undefined) {
+          dataTmp.push({
+            value_en: item.value_en,
+            value_vi: item.value_vi,
+            lessonId: dataLesson.id,
+          });
         }
       }
+      console.log("check data tmp", dataTmp);
+      await createMultipleVocabulary(dataTmp);
     }
     await updateALesson(dataLesson.id, ref.current.input.value, userData.id);
     let result = convertSlug(ref.current.input.value);

@@ -3,7 +3,7 @@ import NProgress from "nprogress";
 import { store } from "../../src/redux/store.js";
 
 const instance = axios.create({
-  baseURL: "http://localhost:6789/api/v1/",
+  baseURL: "https://quizlet-backend.nhodev.xyz/api/v1/",
   // baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1`,
   withCredentials: true,
 });

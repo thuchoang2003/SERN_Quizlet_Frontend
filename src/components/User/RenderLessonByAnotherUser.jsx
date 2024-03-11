@@ -27,24 +27,12 @@ const RenderLessonByAnotherUser = (props) => {
     );
     if (response && response.data) {
       try {
-        const listLengthLessons = await Promise.all(
-          response.data.map(async (item) => {
-            const result = await getAllVocabularyByLessonID(item.id);
-            return result ? result.length : 0;
-          })
-        );
-        const listImageUser = await Promise.all(
-          response.data.map(async (item) => {
-            const result = await getUserByID(item.userid);
-            return result ? result.data.image : "";
-          })
-        );
         const listDataResolved = response.data.map((item, index) => ({
           id: item.id,
           name: item.name,
-          length: listLengthLessons[index],
+          length: item.count,
           username: item.fullname,
-          image: listImageUser[index],
+          image: item.image,
         }));
         setListLessons(listDataResolved);
       } catch (error) {

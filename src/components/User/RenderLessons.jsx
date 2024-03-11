@@ -14,17 +14,10 @@ const RenderLessons = (props) => {
     const response = await getAllLessonByUserId();
     if (response && response.data) {
       try {
-        const listLengthLessons = await Promise.all(
-          response.data.map(async (item) => {
-            const result = await getAllVocabularyByLessonID(item.id);
-            return result ? result.length : 0;
-          })
-        );
-
         const listDataResolved = response.data.map((item, index) => ({
           id: item.id,
           name: item.name,
-          length: listLengthLessons[index],
+          length: item.count,
         }));
         setListLessons(listDataResolved);
       } catch (error) {
