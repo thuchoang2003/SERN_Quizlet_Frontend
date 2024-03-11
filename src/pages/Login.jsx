@@ -1,5 +1,5 @@
 import "../assets/scss/LoginPage.scss";
-import ImageLogin from "../assets/images/ImageLogin.png";
+import ImageLogin from "../assets/images/imageLogin.png";
 import React from "react";
 import {
   GoogleOutlined,
