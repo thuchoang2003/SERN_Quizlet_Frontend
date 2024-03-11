@@ -1,5 +1,5 @@
 import "../assets/scss/LoginPage.scss";
-import ImageLogin from "../assets/images/imageLogin.png";
+import imageLogin from "../assets/images/imageLogin.png";
 import React from "react";
 import {
   GoogleOutlined,
@@ -80,7 +80,7 @@ const Login = (props) => {
     <>
       <div className="login-container">
         <div className="login-left">
-          <img src={ImageLogin} alt="" />
+          <img src={imageLogin} alt="" />
           <div className="login-left__text">
             <span className="title">Học hiệu quả mà thật thoải mái.</span>
           </div>
