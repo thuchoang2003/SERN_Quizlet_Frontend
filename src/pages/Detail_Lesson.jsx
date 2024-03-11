@@ -28,7 +28,6 @@ import { useSelector } from "react-redux";
 import * as XLSX from "xlsx/xlsx.mjs";
 import ModalImportVocabularies from "../components/User/ModalImportVocabularies";
 
-import { useSpeechSynthesis } from "react-speech-kit";
 import { getUserByID } from "../apiService/user.service";
 const Detail_Lesson = (props) => {
   let location = useLocation();
@@ -61,7 +60,6 @@ const Detail_Lesson = (props) => {
     }
   };
   const userData = useSelector((state) => state.account.user);
-  const { speak } = useSpeechSynthesis();
   const postDeleteLesson = async (id) => {
     const response = await deleteALesson(id);
     if (response) {
