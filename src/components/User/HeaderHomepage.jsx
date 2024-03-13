@@ -289,11 +289,11 @@ const HeaderHomepage = (props) => {
         <Row gutter={16} style={{ width: "100%" }}>
           <Col className="gutter-row" span={9}>
             <div className="header_Container--left">
-              <div className="logo">
-                <a href="/home">Quizlet</a>
+              <div className="logo" onClick={() => navigate("/home")}>
+                Quizlet
               </div>
-              <div className="divThree">
-                <a href="/home">Trang chủ</a>
+              <div className="divThree" onClick={() => navigate("/home")}>
+                Trang chủ
               </div>
               <div className="divTwo">
                 <>
