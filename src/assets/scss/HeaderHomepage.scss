@@ -13,11 +13,10 @@
     align-items: center;
     gap: 20px;
     .logo {
-      a {
-        font-size: 30px;
-        font-weight: 700;
-        color: #4255ff;
-      }
+      font-size: 30px;
+      font-weight: 700;
+      color: #4255ff;
+      cursor: pointer;
     }
     .divTwo {
       display: flex;
@@ -29,10 +28,9 @@
       }
     }
     .divThree {
-      a {
-        color: black;
-        font-size: 1rem;
-      }
+      color: black;
+      font-size: 1rem;
+      cursor: pointer;
     }
   }
   .header_Container--middle {
