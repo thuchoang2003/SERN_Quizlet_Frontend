@@ -12,33 +12,26 @@ import { getLesson } from "../redux/counter/lessonSlice";
 import { getAllLessonByUserId } from "../apiService/lesson.service";
 import { useLocation } from "react-router-dom";
 const Logged = (props) => {
+  console.log("check render Logged");
   const dispatch = useDispatch();
   const getData = async () => {
     const location = useLocation();
     let params = new URLSearchParams(location.search);
-    // const id = params.get("id");
-    // const queryParams = new URLSearchParams(window.location.search);
+    console.log("check params");
     if (params) {
       const accessToken = params.get("access_token");
       const refreshToken = params.get("refresh_token");
       const userId = params.get("userid");
+      console.log("check accessToken", accessToken);
+      console.log("check refreshToken", refreshToken);
+      console.log("check userId", userId);
       if (accessToken && refreshToken && userId) {
         localStorage.setItem("access_token", accessToken);
         localStorage.setItem("refresh_token", refreshToken);
-        // Store token in localStorage
-        // const userData = await getUserByID(userId);
-
-        // const result = await getLessonByUserID(userId);
-        // dispatch(doLogin(userData.data));
-        // console.log("check result", result);
-        // dispatch(getLesson(result));
-
         const [userData, lessonData] = await Promise.all([
           getUserByID(userId),
           getAllLessonByUserId(userId),
         ]);
-
-        // Dispatch actions after both promises resolve
         dispatch(doLogin(userData.data));
         dispatch(getLesson(lessonData));
         window.location.href = "/home";
