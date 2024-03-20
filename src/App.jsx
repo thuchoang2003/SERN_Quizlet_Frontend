@@ -98,7 +98,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/home",
+        path: "home",
         element: <Logged />,
       },
       {
@@ -130,11 +130,11 @@ const router = createBrowserRouter([
         element: <CreateLesson />,
       },
       {
-        path: "/profile",
+        path: "profile",
         element: <Profile />,
       },
       {
-        path: "/setting",
+        path: "setting",
         element: <Setting />,
       },
     ],
