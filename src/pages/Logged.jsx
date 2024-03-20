@@ -14,9 +14,9 @@ import { useLocation } from "react-router-dom";
 const Logged = (props) => {
   console.log("check render Logged");
   const dispatch = useDispatch();
+  const location = useLocation();
+  let params = new URLSearchParams(location.search);
   const getData = async () => {
-    const location = useLocation();
-    let params = new URLSearchParams(location.search);
     console.log("check params");
     if (params) {
       const accessToken = params.get("access_token");

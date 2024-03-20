@@ -91,11 +91,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          // <PerfectScrollbar>
-          <Homepage />
-          // </PerfectScrollbar>
-        ),
+        element: <Homepage />,
       },
       {
         path: "home",
