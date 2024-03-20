@@ -10,14 +10,18 @@ import { useDispatch } from "react-redux";
 import { doLogin } from "../redux/counter/accountSlice";
 import { getLesson } from "../redux/counter/lessonSlice";
 import { getAllLessonByUserId } from "../apiService/lesson.service";
+import { useLocation } from "react-router-dom";
 const Logged = (props) => {
   const dispatch = useDispatch();
   const getData = async () => {
-    const queryParams = new URLSearchParams(window.location.search);
-    if (queryParams) {
-      const accessToken = queryParams.get("access_token");
-      const refreshToken = queryParams.get("refresh_token");
-      const userId = queryParams.get("userid");
+    const location = useLocation();
+    let params = new URLSearchParams(location.search);
+    // const id = params.get("id");
+    // const queryParams = new URLSearchParams(window.location.search);
+    if (params) {
+      const accessToken = params.get("access_token");
+      const refreshToken = params.get("refresh_token");
+      const userId = params.get("userid");
       if (accessToken && refreshToken && userId) {
         localStorage.setItem("access_token", accessToken);
         localStorage.setItem("refresh_token", refreshToken);
