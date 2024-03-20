@@ -27,7 +27,6 @@ const ModalChangeUsername = (props) => {
     form
       .validateFields()
       .then(async (values) => {
-        console.log("Received values:", values);
         await callAPIUpdateUsername(userData.id, values.username); // You can access form values here
         setOpenModalChangeUsername(false);
         dispatch(doUpdateUsername(values.username));
@@ -44,14 +43,12 @@ const ModalChangeUsername = (props) => {
     }
   };
   const fillDataUpdate = () => {
-    console.log(valueUsername);
     if (valueUsername) {
       form.setFieldValue("username", valueUsername);
     }
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setOpenModalChangeUsername(false);
   };
   useEffect(() => {

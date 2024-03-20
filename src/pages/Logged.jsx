@@ -12,19 +12,14 @@ import { getLesson } from "../redux/counter/lessonSlice";
 import { getAllLessonByUserId } from "../apiService/lesson.service";
 import { useLocation } from "react-router-dom";
 const Logged = (props) => {
-  console.log("check render Logged");
   const dispatch = useDispatch();
   const location = useLocation();
   let params = new URLSearchParams(location.search);
   const getData = async () => {
-    console.log("check params");
     if (params) {
       const accessToken = params.get("access_token");
       const refreshToken = params.get("refresh_token");
       const userId = params.get("userid");
-      console.log("check accessToken", accessToken);
-      console.log("check refreshToken", refreshToken);
-      console.log("check userId", userId);
       if (accessToken && refreshToken && userId) {
         localStorage.setItem("access_token", accessToken);
         localStorage.setItem("refresh_token", refreshToken);

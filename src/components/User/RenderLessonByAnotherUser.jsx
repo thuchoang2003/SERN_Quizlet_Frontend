@@ -29,7 +29,6 @@ const RenderLessonByAnotherUser = (props) => {
       pageSize,
       userData.id
     );
-    console.log(response);
     if (response && response.data) {
       setListLessons(response.data.rows);
       setTotal(response.data.totalCount);

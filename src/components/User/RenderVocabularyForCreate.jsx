@@ -62,7 +62,6 @@ const ListVocabulariesForCreate = (props) => {
     setDataListVocabulariesForCreate(dataTmp);
   };
   const handleClickDeleteInput = (index) => {
-    console.log("check data before", dataListVocabulariesForCreate);
     let arrTmp = [...dataListVocabulariesForCreate];
     arrTmp.splice(index, 1);
     setDataListVocabulariesForCreate(arrTmp);

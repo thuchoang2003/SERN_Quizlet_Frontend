@@ -51,7 +51,6 @@ const Login = (props) => {
     console.log(error);
   };
   const onFinishRegister = async (value) => {
-    console.log(value);
     const { email, username, password } = value;
     const role = "User";
     const response = await createNewUser(email, password, username, role);

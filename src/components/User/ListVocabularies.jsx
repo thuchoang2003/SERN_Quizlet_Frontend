@@ -42,8 +42,6 @@ const ListVocabularies = forwardRef((props, ref) => {
     setSpinning(!spinning);
     const listDataOld = await getAllVocabularyByLessonID(dataLesson.id);
     if (listDataOld) {
-      console.log("check list Data Old", listDataOld);
-      console.log("check list data New", dataListVocabularies);
       // Lấy danh sách các id từ cả hai mảng
       const idsOld = listDataOld.map((item) => item.id);
       const idsNew = dataListVocabularies.map((item) => item.id);
@@ -99,7 +97,6 @@ const ListVocabularies = forwardRef((props, ref) => {
           });
         }
       }
-      console.log("check data tmp", dataTmp);
       await createMultipleVocabulary(dataTmp);
     }
     await updateALesson(dataLesson.id, ref.current.input.value, userData.id);

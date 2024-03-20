@@ -89,7 +89,6 @@ const ModalImportCreateLesson = (props) => {
           header: ["Value_en", "Value_vi"],
           range: 1,
         });
-        console.log(jsonData);
         setDataImportVocabulary(jsonData);
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`);

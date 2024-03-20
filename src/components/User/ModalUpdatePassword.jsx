@@ -26,7 +26,6 @@ const ModalUpdatePassword = (props) => {
     form
       .validateFields()
       .then(async (values) => {
-        console.log("Received values:", values);
         const { current_password, new_password, confirm_new_password } = values;
         if (new_password !== confirm_new_password) {
           message.error("Mật khẩu mới và mật khẩu xác thực phải trùng nhau !");
@@ -54,7 +53,6 @@ const ModalUpdatePassword = (props) => {
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setOpenModalUpdatePassword(false);
   };
 

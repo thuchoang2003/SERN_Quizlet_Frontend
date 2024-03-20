@@ -53,7 +53,6 @@ const Test_Lesson = (props) => {
       console.error("Error fetching data:", error);
     }
   };
-  console.log(dataListVocabularies);
   useEffect(() => {
     fetchDataVocabularies();
   }, []);
@@ -149,7 +148,6 @@ const Test_Lesson = (props) => {
     if (questionElement) {
       // Lấy giá trị của class "text" bên trong câu hỏi
       const textElements = questionElement.querySelectorAll(".text");
-      console.log(textElements);
 
       // Lấy giá trị của class "text" đầu tiên;
       const firstTextValue = textElements[0].innerText;

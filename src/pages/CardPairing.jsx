@@ -103,11 +103,6 @@ const CardPairing = () => {
   };
 
   const handleClickCard = (index, value, type) => {
-    // console.log("check index", index);
-    // console.log("check value", value);
-    // console.log("check data", dataExamToView);
-    // console.log("type", type);
-
     for (let i = 0; i < 6; i++) {
       const cardElementVi = document.getElementById(`exam-${i}-vi`);
       const cardElementEn = document.getElementById(`exam-${i}-en`);
@@ -176,9 +171,6 @@ const CardPairing = () => {
         }
       }
     }
-
-    console.log("check array", matchedPairs);
-    console.log(randomizedList);
   };
 
   useEffect(() => {

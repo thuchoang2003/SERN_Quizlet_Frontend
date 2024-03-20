@@ -20,9 +20,6 @@ const Result_Test = (props) => {
     location.state && location.state.answerRandomByVerson1;
   const answerRandomByVerson2 =
     location.state && location.state.answerRandomByVerson2;
-  console.log("check answerDataByUser", answerDataByUser);
-  console.log("check answerRandomByVerson1", answerRandomByVerson1);
-  console.log("check answerRandomByVerson2", answerRandomByVerson2);
   const [countTrueAnswer, setCountTrueAnswer] = useState(0);
   const [countFalseAnswer, setCountFalseAnswer] = useState(0);
   const [dataListVocabulary, setDataListVocabularies] = useState([]);
@@ -44,7 +41,6 @@ const Result_Test = (props) => {
   };
   const fetchDataVocabularies = async () => {
     const dataListVocabularies = await getAllVocabularyByLessonID(id);
-    console.log(dataListVocabularies);
     setDataListVocabularies(dataListVocabularies);
     let arrTmp = dataListVocabularies.map((element) => {
       return element.value_vi;
@@ -102,7 +98,6 @@ const Result_Test = (props) => {
         const vocabulary = dataListVocabularies.find(
           (v) => v.id === questionId
         );
-        console.log("check vola", vocabulary);
         if (userAnswer.isCorrect !== undefined) {
           if (userAnswer.isCorrect) {
             if (userAnswer.value_vi == vocabulary.value_vi) countTrue++;
@@ -118,10 +113,7 @@ const Result_Test = (props) => {
 
       setCountTrueAnswer(countTrue);
       setCountFalseAnswer(dataListVocabularies.length - countTrue);
-      // if (!hasMounted.current) {
-      console.log("check call");
       await create(userData.id, id, countTrue, dataListVocabularies.length);
-      // }
     }
   };
 

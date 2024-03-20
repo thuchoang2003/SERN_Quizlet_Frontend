@@ -18,7 +18,6 @@ const Remember_Card = (props) => {
   let location = useLocation();
   let params = new URLSearchParams(location.search);
   const id = params.get("id");
-  console.log(id);
   const [listVocabulary, setListVocabulary] = useState([]);
   const [dataDetailLesson, setDataDetailLesson] = useState();
 
