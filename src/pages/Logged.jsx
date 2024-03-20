@@ -4,7 +4,46 @@ import imageTest from "../assets/images/imageTest.jpg";
 import imageRemember from "../assets/images/imageRemember.jpg";
 import RenderLessons from "../components/User/RenderLessons";
 import RenderLessonByAnotherUser from "../components/User/RenderLessonByAnotherUser";
+import { useEffect } from "react";
+import { getUserByID } from "../apiService/user.service";
+import { useDispatch } from "react-redux";
+import { doLogin } from "../redux/counter/accountSlice";
+import { getLesson } from "../redux/counter/lessonSlice";
+import { getAllLessonByUserId } from "../apiService/lesson.service";
 const Logged = (props) => {
+  const dispatch = useDispatch();
+  const getData = async () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    if (queryParams) {
+      const accessToken = queryParams.get("access_token");
+      const refreshToken = queryParams.get("refresh_token");
+      const userId = queryParams.get("userid");
+      if (accessToken && refreshToken && userId) {
+        localStorage.setItem("access_token", accessToken);
+        localStorage.setItem("refresh_token", refreshToken);
+        // Store token in localStorage
+        // const userData = await getUserByID(userId);
+
+        // const result = await getLessonByUserID(userId);
+        // dispatch(doLogin(userData.data));
+        // console.log("check result", result);
+        // dispatch(getLesson(result));
+
+        const [userData, lessonData] = await Promise.all([
+          getUserByID(userId),
+          getAllLessonByUserId(userId),
+        ]);
+
+        // Dispatch actions after both promises resolve
+        dispatch(doLogin(userData.data));
+        dispatch(getLesson(lessonData));
+        window.location.href = "/home";
+      }
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
       <div style={{ width: "100%", backgroundColor: "#f6f7fb" }}>

@@ -53,6 +53,29 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    .btnAddNewLesson {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+    }
+    .btn-Login {
+      width: 100px;
+      height: 40px;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 14px;
+      border: 1px solid #cccc;
+    }
+    .btn-Register {
+      width: "fit-content";
+      height: 40px;
+      border-radius: 10px;
+      background-color: #ffcd1f;
+      font-weight: 500;
+      font-size: 15px;
+      border: 1px solid #cccc;
+    }
   }
 }
 // span.ant-dropdown-menu-title-content {
@@ -60,4 +83,101 @@
 // }
 .ant-divider-horizontal {
   margin: 10px 0px 5px 0px;
+}
+
+@media only screen and (max-width: 523px) {
+  .header_Container {
+    // max-width: 1440px;
+    // margin: 0 auto;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    .header_Container--left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      .logo {
+        font-size: 30px;
+        font-weight: 700;
+        color: #4255ff;
+        cursor: pointer;
+      }
+      .divTwo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        .title {
+          color: black;
+          font-size: 1rem;
+        }
+      }
+      .divThree {
+        color: black;
+        font-size: 1rem;
+        cursor: pointer;
+        display: none;
+      }
+    }
+    .header_Container--middle {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      .div-iconSearch {
+        position: absolute;
+        margin-left: 10px;
+        z-index: 1;
+        display: none;
+      }
+      .div-InputSearch {
+        width: 100%;
+        height: 40px;
+        .input_search {
+          display: none;
+        }
+      }
+    }
+    .header_Container--right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      .dropDown {
+        display: none;
+      }
+      .btnAddNewLesson {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 20px;
+        .iconAddNew {
+          svg {
+            margin-bottom: 3px;
+          }
+        }
+      }
+      .btn-Login {
+        width: 100px;
+        height: 40px;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 14px;
+        border: 1px solid #cccc;
+      }
+      .btn-Register {
+        width: "fit-content";
+        height: 40px;
+        border-radius: 10px;
+        background-color: #ffcd1f;
+        font-weight: 500;
+        font-size: 15px;
+        border: 1px solid #cccc;
+      }
+    }
+  }
 }

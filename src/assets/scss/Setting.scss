@@ -213,3 +213,222 @@
     }
   }
 }
+@media only screen and (max-width: 523px) {
+  .div-backgroundSetting {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding: 5px 10px 5px 10px;
+      height: 100%;
+      .header {
+        height: 50px;
+        width: 100%;
+        text-align: start;
+        font-size: 1.8rem;
+        line-height: 50px;
+        font-weight: 600;
+      }
+      .main {
+        width: 100%;
+        margin-top: 10px;
+        .label {
+          text-align: start;
+          margin: 5px 0px;
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: var(--text-color);
+        }
+        .div-content {
+          border: 0.125rem solid #c4c4c4;
+          border-radius: 20px;
+          height: 100%;
+          .avatar {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-bottom: 1px solid #bdbdbd;
+            padding-bottom: 20px;
+            .left {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              //   align-items: center;
+              //   align-content: flex-start;
+              padding-left: 30px;
+              gap: -10px;
+              .text {
+                width: 130px;
+                height: 30px;
+                text-align: center;
+                font-size: 1.1rem;
+              }
+              .image {
+                width: 130px;
+                height: 130px;
+              }
+            }
+            .right {
+              padding-left: 10px;
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              gap: 5px;
+              .avatar-default {
+                cursor: pointer;
+                width: 35px !important;
+                height: 35px !important;
+              }
+            }
+            .avatar-uploader {
+              width: 40px;
+              height: 40px;
+              display: inline-block;
+              .ant-upload {
+                width: 40px;
+                height: 40px;
+              }
+            }
+          }
+          .div-username {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px 20px 30px;
+            border-bottom: 1px solid #bdbdbd;
+            height: 60px;
+            align-items: center;
+            .info {
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              justify-content: center;
+              gap: 10px;
+              .info_label {
+                font-size: 1.1rem;
+                font-weight: 500;
+              }
+              .username {
+                font-size: 1.1rem;
+                font-weight: 200;
+                color: var(--text-color);
+              }
+            }
+            .btn {
+              font-size: 19px;
+              color: #4255ff;
+              width: 80px;
+              height: 40px;
+              font-weight: 500;
+            }
+            .btn:hover {
+              background-color: #dbdfff;
+            }
+          }
+          .div-email {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px 20px 30px;
+            border-bottom: 1px solid #bdbdbd;
+            height: 60px;
+            align-items: center;
+            .info {
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              justify-content: center;
+              gap: 10px;
+              .info_label {
+                font-size: 1.1rem;
+                font-weight: 500;
+              }
+              .username {
+                font-size: 1.1rem;
+                font-weight: 200;
+                color: var(--text-color);
+              }
+            }
+            .btn {
+              font-size: 19px;
+              color: #4255ff;
+              width: 80px;
+              height: 40px;
+              font-weight: 500;
+            }
+            .btn:hover {
+              background-color: #dbdfff;
+            }
+          }
+          .div-password {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px 20px 30px;
+            border-bottom: 1px solid #bdbdbd;
+            height: 60px;
+            align-items: center;
+            .info {
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              justify-content: center;
+              gap: 10px;
+              .info_label {
+                font-size: 1.1rem;
+                font-weight: 500;
+              }
+            }
+            .btn {
+              font-size: 19px;
+              color: #4255ff;
+              width: 80px;
+              height: 40px;
+              font-weight: 500;
+            }
+            .btn:hover {
+              background-color: #dbdfff;
+            }
+          }
+          .div-deleteAccount {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px 20px 30px;
+            height: 60px;
+            align-items: center;
+            .info {
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              justify-content: center;
+              gap: 10px;
+              margin-right: 10px;
+              .info_label {
+                font-size: 1.1rem;
+                font-weight: 500;
+              }
+              .username {
+                font-size: 0.9rem;
+                font-weight: 200;
+                color: var(--text-color);
+              }
+            }
+            .btn {
+              font-size: 14px;
+              color: white;
+              width: 120px;
+              height: 50px;
+              font-weight: 500;
+              background-color: #b00020;
+            }
+            .btn:hover {
+              background-color: rgba(176, 0, 32, 0.8);
+            }
+          }
+        }
+      }
+    }
+  }
+}

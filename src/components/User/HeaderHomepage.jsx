@@ -22,15 +22,12 @@ import {
   Avatar,
 } from "antd";
 import "../../assets/scss/HeaderHomepage.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, connect } from "react-redux";
 import imageLogin from "../../assets/images/imageLogin.png";
 import { doLogout } from "../../redux/counter/accountSlice";
-const HeaderHomepage = (props) => {
+const HeaderHomepage = ({ authenticated, userData, listLesson }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const authenticated = useSelector((state) => state.account.isAuthenticated);
-  const userData = useSelector((state) => state.account.user);
-  const listLesson = useSelector((state) => state.lesson.data);
   const base64Avatar = userData.image;
   const handleClickLogout = (e) => {
     e.preventDefault();
@@ -189,53 +186,55 @@ const HeaderHomepage = (props) => {
     },
   ];
 
-  const setItemLessonHeader = (listLesson) => {
-    let listDataTmp = listLesson.map((item, index) => {
-      return {
-        key: index,
-        label: (
-          <div
-            style={{ width: "350px", height: "50px" }}
-            onClick={() => handleNavigateLessonPage(item)}
-          >
-            <div style={{ fontWeight: "600", fontSize: "1rem" }}>
-              {item.name}
-            </div>
+  const setItemLessonHeader = () => {
+    if (listLesson && listLesson.length > 0) {
+      let listDataTmp = listLesson.map((item, index) => {
+        return {
+          key: index,
+          label: (
             <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
-              }}
+              style={{ width: "350px", height: "50px" }}
+              onClick={() => handleNavigateLessonPage(item)}
             >
-              <Avatar
-                src={base64Avatar}
-                style={{
-                  cursor: "pointer",
-                  width: "20px",
-                  height: "20px",
-                }}
-              />
+              <div style={{ fontWeight: "600", fontSize: "1rem" }}>
+                {item.name}
+              </div>
               <div
                 style={{
-                  color: "#586380",
-                  fontSize: "0.8rem",
-                  fontWeight: "600",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
                 }}
               >
-                user
+                <Avatar
+                  src={base64Avatar}
+                  style={{
+                    cursor: "pointer",
+                    width: "20px",
+                    height: "20px",
+                  }}
+                />
+                <div
+                  style={{
+                    color: "#586380",
+                    fontSize: "0.8rem",
+                    fontWeight: "600",
+                  }}
+                >
+                  user
+                </div>
               </div>
             </div>
-          </div>
-        ),
-      };
-    });
-    if (listDataTmp) setItemsDropdownTest(listDataTmp);
+          ),
+        };
+      });
+      if (listDataTmp) setItemsDropdownTest(listDataTmp);
+    }
   };
 
   useEffect(() => {
-    setItemLessonHeader(listLesson);
-  }, []);
+    setItemLessonHeader();
+  }, [userData]);
 
   const nonAccentVietnamese = (str) => {
     str = str.replace(/A|Á|À|Ã|Ạ|Â|Ấ|Ầ|Ẫ|Ậ|Ă|Ắ|Ằ|Ẵ|Ặ/g, "A");
@@ -287,7 +286,7 @@ const HeaderHomepage = (props) => {
     <>
       <div className="header_Container">
         <Row gutter={16} style={{ width: "100%" }}>
-          <Col className="gutter-row" span={9}>
+          <Col className="gutter-row" span={8}>
             <div className="header_Container--left">
               <div className="logo" onClick={() => navigate("/home")}>
                 Quizlet
@@ -313,7 +312,7 @@ const HeaderHomepage = (props) => {
               </div>
             </div>
           </Col>
-          <Col className="gutter-row" span={9}>
+          <Col className="gutter-row" xs={0} sm={4} md={6} lg={8} xl={8}>
             <div className="header_Container--middle">
               <div className="div-iconSearch">
                 <SearchOutlined />
@@ -331,59 +330,56 @@ const HeaderHomepage = (props) => {
                     fontSize: "17px",
                     fontWeight: "500",
                   }}
+                  className="input_search"
                 ></Input>
               </div>
             </div>
           </Col>
-          <Col className="gutter-row" span={6}>
+          <Col className="gutter-row" xs={16} md={6} lg={8} xl={8}>
             <div className="header_Container--right">
               <Button
                 type="primary"
-                icon={<PlusOutlined />}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  fontSize: "20px",
-                }}
+                icon={<PlusOutlined className="iconAddNew" />}
                 onClick={() => {
                   !authenticated
                     ? navigate("/login")
                     : navigate("/lesson/create");
                 }}
+                className="btnAddNewLesson"
               />
               {!authenticated && (
                 <>
-                  {" "}
                   <Button
-                    style={{
-                      width: "fit-content",
-                      height: "40px",
-                      borderRadius: "10px",
-                      fontWeight: 500,
-                      fontSize: "15px",
-                      border: "1px solid #cccc",
-                    }}
+                    // style={{
+                    //   width: "fit-content",
+                    //   height: "40px",
+                    //   borderRadius: "10px",
+                    //   fontWeight: 500,
+                    //   fontSize: "15px",
+                    //   border: "1px solid #cccc",
+                    // }}
                     onClick={() => {
                       navigate("/login");
                     }}
                     type="text"
+                    className="btn-Login"
                   >
                     Đăng nhập
                   </Button>
                   <Button
-                    style={{
-                      width: "fit-content",
-                      height: "40px",
-                      borderRadius: "10px",
-                      backgroundColor: "#ffcd1f",
-                      fontWeight: 500,
-                      fontSize: "15px",
-                      border: "1px solid #cccc",
-                    }}
+                    // style={{
+                    //   width: "fit-content",
+                    //   height: "40px",
+                    //   borderRadius: "10px",
+                    //   backgroundColor: "#ffcd1f",
+                    //   fontWeight: 500,
+                    //   fontSize: "15px",
+                    //   border: "1px solid #cccc",
+                    // }}
                     onClick={() => {
                       navigate("/login");
                     }}
+                    className="btn-Register"
                   >
                     Đăng ký
                   </Button>
@@ -407,6 +403,7 @@ const HeaderHomepage = (props) => {
                       )
                     }
                     placement="topRight"
+                    className="dropDown"
                   >
                     <Button
                       icon={<BellOutlined style={{ fontSize: "1rem" }} />}
@@ -455,6 +452,8 @@ const HeaderHomepage = (props) => {
                       fontSize: "15px",
                       border: "1px solid #cccc",
                     }}
+                    className="btnUpgrade"
+                    type="text"
                   >
                     <span style={{ maxWidth: "max(7.5rem, 15vw)" }}>
                       Nâng cấp
@@ -469,4 +468,11 @@ const HeaderHomepage = (props) => {
     </>
   );
 };
-export default HeaderHomepage;
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.account.isAuthenticated,
+    userData: state.account.user,
+    listLesson: state.lesson.data,
+  };
+};
+export default connect(mapStateToProps)(HeaderHomepage);

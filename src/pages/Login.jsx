@@ -21,7 +21,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createNewUser } from "../apiService/user.service";
-import { postLogin } from "../apiService/auth.service";
+import { postLogin, loginWithLogin } from "../apiService/auth.service";
 import { useDispatch } from "react-redux";
 import { doLogin } from "../redux/counter/accountSlice";
 import { getLesson } from "../redux/counter/lessonSlice";
@@ -143,22 +143,13 @@ const Login = (props) => {
                     className="item"
                     type="text"
                     icon={<GoogleOutlined style={{ fontSize: "19px" }} />}
+                    onClick={() =>
+                      (window.location.href = `${
+                        import.meta.env.VITE_BACKEND_URL
+                      }/auth/google`)
+                    }
                   >
                     Đăng nhập bằng Google
-                  </Button>
-                  <Button
-                    className="item"
-                    type="text"
-                    icon={<FacebookFilled style={{ fontSize: "19px" }} />}
-                  >
-                    Đăng nhập bằng Facebook
-                  </Button>
-                  <Button
-                    className="item"
-                    type="text"
-                    icon={<AppleFilled style={{ fontSize: "19px" }} />}
-                  >
-                    Đăng nhập bằng Apple
                   </Button>
                 </div>
                 <div
@@ -200,13 +191,14 @@ const Login = (props) => {
                         initialValues={{
                           layout: "vertical",
                         }}
-                        style={{
-                          height: "50px",
-                          backgroundColor: "#f6f7fb",
-                          fontSize: "16px",
-                          fontWeight: 700,
-                          borderRadius: "10px",
-                        }}
+                        // style={{
+                        //   height: "50px",
+                        //   backgroundColor: "#f6f7fb",
+                        //   fontSize: "16px",
+                        //   fontWeight: 700,
+                        //   borderRadius: "10px",
+                        // }}
+                        className="inputEmail"
                       />
                     </Form.Item>
                     <Form.Item label="Password" name="Password">
@@ -218,19 +210,20 @@ const Login = (props) => {
                             message: "Hãy nhập mật khẩu",
                           },
                         ]}
-                        style={{
-                          height: "50px",
-                          backgroundColor: "#f6f7fb",
-                          fontSize: "16px",
-                          fontWeight: 700,
-                          borderRadius: "10px",
-                        }}
+                        // style={{
+                        //   height: "50px",
+                        //   backgroundColor: "#f6f7fb",
+                        //   fontSize: "16px",
+                        //   fontWeight: 700,
+                        //   borderRadius: "10px",
+                        // }}
+                        className="inputPassword"
                       />
                     </Form.Item>
                     <div
                       style={{
-                        height: "70px",
-                        padding: "0px 30px",
+                        height: "60px",
+                        padding: "0px 10px",
                       }}
                     >
                       <span style={{ textAlign: "center", display: "block" }}>
@@ -241,16 +234,17 @@ const Login = (props) => {
                     </div>
                     <Form.Item>
                       <Button
-                        style={{
-                          width: "100%",
-                          height: "60px",
-                          backgroundColor: "#4255ff",
-                          color: "white",
-                          fontSize: "17px",
-                          fontWeight: 600,
-                          borderRadius: "10px",
-                        }}
+                        // style={{
+                        //   width: "100%",
+                        //   height: "60px",
+                        //   backgroundColor: "#4255ff",
+                        //   color: "white",
+                        //   fontSize: "17px",
+                        //   fontWeight: 600,
+                        //   borderRadius: "10px",
+                        // }}
                         htmlType="submit"
+                        className="btnLogin"
                       >
                         Đăng nhập
                       </Button>
@@ -334,6 +328,9 @@ const Login = (props) => {
                     className="item"
                     type="text"
                     icon={<GoogleOutlined style={{ fontSize: "19px" }} />}
+                    onClick={() =>
+                      (window.location.href = `${process.env.VITE_BACKEND_URL}/auth/google`)
+                    }
                   >
                     Đăng nhập bằng Google
                   </Button>
@@ -433,7 +430,7 @@ const Login = (props) => {
                         }}
                       />
                     </Form.Item>
-                    <div style={{ height: "70px", padding: "0px 100px" }}>
+                    <div style={{ height: "70px", padding: "0px 20px" }}>
                       <span style={{ textAlign: "center", display: "block" }}>
                         Bằng cách nhấp Đăng ký, bạn chấp nhận{" "}
                         <a href="">Điều khoản dịch vụ</a> Và{" "}

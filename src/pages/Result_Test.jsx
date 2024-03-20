@@ -415,7 +415,7 @@ const Result_Test = (props) => {
                         </div>
                         <div
                           style={{
-                            fontSize: "1rem",
+                            fontSize: "0.8rem",
                             height: "40px",
                             color: "#586380",
                             margin: "20px 0px 0px 0px",
@@ -423,7 +423,7 @@ const Result_Test = (props) => {
                         >
                           Thuật ngữ chính xác:
                         </div>
-                        <div style={{ fontSize: "1.4rem", fontWeight: 100 }}>
+                        <div style={{ fontSize: "1.1rem", fontWeight: 100 }}>
                           {item.value_vi}
                         </div>
                       </div>
@@ -613,8 +613,8 @@ const Result_Test = (props) => {
                           <Button
                             style={{
                               width: "100%",
-                              height: "100%",
-                              fontSize: "1.1rem",
+                              height: "50px",
+                              fontSize: "0.9rem",
                               fontWeight: "600",
                               borderRadius: "10px",
                               color: "#282e3e",
@@ -658,8 +658,8 @@ const Result_Test = (props) => {
                           <Button
                             style={{
                               width: "100%",
-                              height: "100%",
-                              fontSize: "1.1rem",
+                              height: "50px",
+                              fontSize: "0.9rem",
                               fontWeight: "600",
                               borderRadius: "10px",
                               color: "#282e3e",

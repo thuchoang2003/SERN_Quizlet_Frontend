@@ -26,9 +26,9 @@ const createNewLesson = async (name, userid) => {
       name: name,
       userid: userid,
     };
-
+    console.log("check data", data);
     const response = await instance.post("lesson/create", data);
-    if (response && response.data) {
+    if (response) {
       return response.data;
     } else {
       throw new Error("Failed to create lesson");
@@ -98,6 +98,12 @@ const getLessonByLessonId = async (id) => {
   if (res) return res;
 };
 
+const getAllLessonWithPaginateByAnotherUser = async (current, pageSize, id) => {
+  const res = await instance.get(
+    `lesson/getAllLessonWithPaginateByAnotherUser?current=${current}&pageSize=${pageSize}&id=${id}`
+  );
+  return res;
+};
 export {
   getAllLessons,
   createNewLesson,
@@ -106,4 +112,5 @@ export {
   getAllLessonWithPaginate,
   getAllLessonByUserId,
   getLessonByLessonId,
+  getAllLessonWithPaginateByAnotherUser,
 };

@@ -44,7 +44,6 @@ const ModalCreateNewLesson = (props) => {
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setOpenModalCreateLesson(false);
   };
   const callAPIFetchUser = async () => {

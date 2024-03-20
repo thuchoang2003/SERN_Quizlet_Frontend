@@ -69,3 +69,78 @@
     }
   }
 }
+@media only screen and (max-width: 523px) {
+  .div-backgroundPairingCard {
+    width: 100%;
+    background-color: var(--background-color);
+    height: 100vh;
+    .btnBack {
+      position: absolute;
+      right: 2%;
+      margin: 10px 0px 20px 0px;
+    }
+    .container-pairingCard {
+      // max-width: 1440px;
+      // margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      column-gap: 10px;
+      height: 100%;
+      padding: 50px 0px;
+      box-sizing: border-box;
+      row-gap: 10px;
+      align-content: flex-start;
+      .item {
+        width: 45%;
+        height: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: 2px solid #cccc;
+        border-radius: 20px;
+        .text {
+          font-size: 1rem;
+          text-align: center;
+          font-weight: lighter;
+          display: block;
+        }
+      }
+      .item:hover {
+        background-color: #edeff4;
+        cursor: pointer;
+      }
+      .item .hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: "visibility 0s, opacity 0.5s";
+        width: 23%;
+        height: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border: 2px solid #cccc;
+        border-radius: 20px;
+      }
+      .clicked {
+        border: 2px solid #4255ff;
+        background-color: #edefff;
+      }
+      .div-resultPairing {
+        width: 50%;
+        border: 1px solid red;
+        .title {
+        }
+        .div-img {
+          img {
+          }
+        }
+      }
+      .div-btnResultPairing {
+      }
+    }
+  }
+}

@@ -48,9 +48,9 @@ const Homepage = (props) => {
             </div>
             <div className="div-text__btn">
               <Button
-                style={{ width: "170px", height: "50px" }}
                 type="primary"
                 onClick={() => navigate("/login")}
+                className="btnDivTextOne"
               >
                 <span>Đăng ký miễn phí</span>
               </Button>
@@ -80,9 +80,9 @@ const Homepage = (props) => {
             </div>
             <div className="div-text__btn">
               <Button
-                style={{ width: "140px", height: "60px" }}
                 type="primary"
                 onClick={() => navigate("/login")}
+                className="btnRemember"
               >
                 <span>Bắt đầu</span>
               </Button>
@@ -158,9 +158,9 @@ const Homepage = (props) => {
             </div>
             <div className="btn">
               <Button
-                style={{ width: "260px", height: "60px" }}
                 type="primary"
                 onClick={() => navigate("/login")}
+                className="btnLearnAndTest"
               >
                 <span>Thử miễn phí Học và Kiểm tra</span>
               </Button>
@@ -223,9 +223,9 @@ const Homepage = (props) => {
             </div>
             <div className="btn">
               <Button
-                style={{ width: "260px", height: "60px" }}
                 type="primary"
                 onClick={() => navigate("/login")}
+                className="btnMath"
               >
                 <span>Khám phá lời giải miễn phí</span>
               </Button>
@@ -299,9 +299,9 @@ const Homepage = (props) => {
             </div>
             <div className="div-text__btn">
               <Button
-                style={{ width: "240px", height: "60px" }}
                 type="primary"
                 onClick={() => navigate("/login")}
+                className="btnTeacher"
               >
                 <span>Lập tài khoản miễn phí</span>
               </Button>

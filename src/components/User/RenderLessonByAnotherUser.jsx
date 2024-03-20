@@ -6,7 +6,11 @@ import _ from "lodash";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../assets/scss/RenderLessons.scss";
-import { getAllLessonWithPaginate } from "../../apiService/lesson.service";
+import {
+  getAllLessonWithPaginate,
+  getAllLessons,
+  getAllLessonWithPaginateByAnotherUser,
+} from "../../apiService/lesson.service";
 import { getUserByID } from "../../apiService/user.service";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { Button, Pagination } from "antd";
@@ -14,36 +18,28 @@ const RenderLessonByAnotherUser = (props) => {
   const [listLessons, setListLessons] = useState();
   const [current, setCurrent] = useState(1);
   const [pageSize, setPageSize] = useState(3);
+  const [total, setTotal] = useState();
   const navigate = useNavigate();
   const userData = useSelector((state) => state.account.user);
+  const dataLessonByUser = useSelector((state) => state.lesson.data);
 
   const fetchAPILessons = async () => {
-    const response = await getAllLessonWithPaginate(
+    const response = await getAllLessonWithPaginateByAnotherUser(
       current,
       pageSize,
-      "",
-      "",
-      ""
+      userData.id
     );
+    console.log(response);
     if (response && response.data) {
-      try {
-        const listDataResolved = response.data.map((item, index) => ({
-          id: item.id,
-          name: item.name,
-          length: item.count,
-          username: item.fullname,
-          image: item.image,
-        }));
-        setListLessons(listDataResolved);
-      } catch (error) {
-        console.error("Error fetching vocabulary lengths:", error);
-      }
+      setListLessons(response.data.rows);
+      setTotal(response.data.totalCount);
     }
   };
 
   useEffect(() => {
     fetchAPILessons();
   }, [current]);
+
   const nonAccentVietnamese = (str) => {
     str = str.replace(/A|Á|À|Ã|Ạ|Â|Ấ|Ầ|Ẫ|Ậ|Ă|Ắ|Ằ|Ẵ|Ặ/g, "A");
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
@@ -112,7 +108,7 @@ const RenderLessonByAnotherUser = (props) => {
                       <span>{item.name}</span>
                     </div>
                     <div className="count">
-                      <span>{item.length} thuật ngữ</span>
+                      <span>{item.count} thuật ngữ</span>
                     </div>
                   </div>
                   <div className="lessonComponent-item__footer">
@@ -120,24 +116,26 @@ const RenderLessonByAnotherUser = (props) => {
                       <img src={item.image} alt="" />
                     </div>
                     <div className="username">
-                      <span>{item.username}</span>
+                      <span>{item.fullname}</span>
                     </div>
                   </div>
                 </div>
               );
             })}
-            <Pagination
-              defaultCurrent={current}
-              total={40}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-              }}
-              onChange={onChangePage}
-            />
           </div>
+          <Pagination
+            defaultCurrent={current}
+            total={total}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              marginTop: "20px",
+            }}
+            onChange={onChangePage}
+            defaultPageSize={3}
+          />
         </div>
       )}
     </>

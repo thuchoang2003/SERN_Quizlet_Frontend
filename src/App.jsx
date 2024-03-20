@@ -48,8 +48,11 @@ const LayoutAdmin = () => {
   const userRole = user.role;
   return (
     <div className="app-container">
-      {isAdminRoute && userRole === "Admin" && <AdminHomepage />}
-      {isAdminRoute && userRole !== "Admin" && <NotPermitted />}
+      {isAdminRoute && userRole === "Admin" ? (
+        <AdminHomepage />
+      ) : (
+        <NotPermitted />
+      )}
     </div>
   );
 };

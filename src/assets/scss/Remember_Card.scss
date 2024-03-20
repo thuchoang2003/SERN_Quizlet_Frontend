@@ -79,3 +79,85 @@
     }
   }
 }
+@media only screen and (max-width: 523px) {
+  .div-backgroundFlashCard {
+    background-color: var(--background-color);
+    width: 100%;
+    height: 100vh !important;
+    .flashcard_container {
+      max-width: 1440px;
+      margin: 0 auto;
+      .flashcard_header {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: white;
+        margin-top: 10px;
+        border-radius: 10px;
+        gap: 50px;
+        padding-left: 5%;
+        padding-right: 10%;
+        .flashcard_header--itemLeft {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-left: 20px;
+        }
+        .flashcard_header--itemMiddle {
+        }
+        .flashcard_header--itemRight {
+          padding-right: 20px;
+        }
+      }
+      .react-card-flip {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .text {
+        max-width: 90%;
+        height: 250px;
+        margin: 10px 0px 0px 5%;
+        background-color: white;
+        border-radius: 15px;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 100;
+      }
+
+      .flashcard_footer {
+        width: 90%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0px 10px 5%;
+        gap: 20px;
+        .flashcard_footer--btn {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 2px solid #cccc;
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+        span {
+          color: #586380;
+        }
+      }
+      .divider {
+        display: none;
+      }
+      .div-playBtn {
+        display: inline-block;
+      }
+    }
+  }
+}

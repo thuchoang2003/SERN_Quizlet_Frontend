@@ -3,10 +3,12 @@ import NProgress from "nprogress";
 import { store } from "../../src/redux/store.js";
 
 const instance = axios.create({
-  baseURL: "https://quizlet-backend.nhodev.xyz/api/v1/",
-  // baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/v1`,
+  // baseURL: "https://quizlet-backend.nhodev.xyz/api/v1/",
+  // baseURL: "http://localhost:6789/api/v1/",
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}`,
   withCredentials: true,
 });
+
 const handleRefreshToken = async () => {
   const refreshToken = localStorage.getItem("refresh_token");
   let response = await instance.post("/auth/refresh", {
@@ -24,6 +26,7 @@ instance.interceptors.request.use(
     // Do something before request is sent
     config.headers["Authorization"] =
       "Bearer " + localStorage.getItem("access_token");
+
     NProgress.start();
     return config;
   },
@@ -37,15 +40,10 @@ const NO_RETRY_HEADER = "x-no-retry";
 // Add a response interceptor
 instance.interceptors.response.use(
   function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
     NProgress.done();
-
     return response && response.data ? response.data : response;
   },
   async function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
     NProgress.done();
     const status = error.response ? error.response.status : null;
 

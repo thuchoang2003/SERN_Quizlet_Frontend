@@ -38,6 +38,7 @@ export const accountSlice = createSlice({
     doUpdateAvatar: (state, action) => {
       state.user.image = action?.payload;
     },
+
     // doGetAccount: (state, action) => {
     //   state.user = action?.payload?.user;
     //   state.isAuthenticated = true;

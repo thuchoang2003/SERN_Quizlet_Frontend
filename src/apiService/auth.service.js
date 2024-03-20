@@ -23,4 +23,12 @@ const resetPassword = async (current_password, new_password) => {
     console.log(error);
   }
 };
-export { postLogin, resetPassword };
+const loginWithLogin = async () => {
+  try {
+    const response = await instance.get("/auth/google");
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export { postLogin, resetPassword, loginWithLogin };

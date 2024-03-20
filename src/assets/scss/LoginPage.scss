@@ -59,6 +59,31 @@
           border-radius: "10px";
         }
       }
+      .formInput {
+        .inputEmail {
+          height: 50px;
+          background-color: #f6f7fb;
+          font-size: 16px;
+          font-weight: 700;
+          border-radius: 10px;
+        }
+        .inputPassword {
+          height: 50px;
+          background-color: #f6f7fb;
+          font-size: 16px;
+          font-weight: 700;
+          border-radius: 10px;
+        }
+        .btnLogin {
+          width: 100%;
+          height: 60px;
+          background-color: #4255ff;
+          color: white;
+          font-size: 15px;
+          font-weight: 600;
+          border-radius: 10px;
+        }
+      }
       .divider {
       }
     }
@@ -80,4 +105,117 @@
   font-size: 16px;
   font-weight: 700;
   border-radius: 10px;
+}
+
+@media only screen and (max-width: 523px) {
+  .login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    .login-left {
+      width: 50%;
+      height: 905px;
+      position: relative;
+      display: none;
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        object-fit: cover;
+        object-position: center;
+      }
+      .login-left__text {
+        position: absolute;
+        width: 40%;
+        height: fit-content;
+        left: 5%;
+        top: 10%;
+        .title {
+          position: absolute;
+          font-size: 40px;
+          color: black;
+          font-weight: 600;
+        }
+      }
+      .logo {
+        position: absolute;
+        bottom: 7%;
+        left: 10%;
+        font-size: 50px;
+        color: white;
+        font-weight: 500;
+      }
+    }
+    .login-right {
+      width: 100%;
+      height: 100%;
+      padding: 0px 0px;
+      .div-login {
+        padding: 10px 20px;
+        .div-threeBtn {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          padding: 20px 0px;
+          gap: 5px;
+          .item {
+            width: 100%;
+            height: 60px;
+            font-size: 16px;
+            font-weight: 500;
+            border: 2px solid #cccc;
+            color: #586380;
+            border-radius: "10px";
+          }
+        }
+        .formInput {
+          .inputEmail {
+            height: 50px;
+            background-color: #f6f7fb;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 10px;
+          }
+          .inputPassword {
+            height: 50px;
+            background-color: #f6f7fb;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 10px;
+          }
+          .btnLogin {
+            margin-top: 20px;
+            width: 100%;
+            height: 60px;
+            background-color: #4255ff;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 10px;
+          }
+        }
+        .divider {
+        }
+      }
+    }
+  }
+  .ant-btn:hover {
+    background-color: #f6f7fb;
+  }
+  #formRegister_password {
+    background-color: #f6f7fb;
+    height: "50px";
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+  }
+  #formLogin_Password {
+    background-color: #f6f7fb;
+    height: "50px";
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+  }
 }

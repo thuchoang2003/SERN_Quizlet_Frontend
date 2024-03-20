@@ -5,7 +5,7 @@ import {
   SettingOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import { Button, Dropdown, Input, Divider } from "antd";
+import { Button, Dropdown, Input, Divider, message } from "antd";
 import {
   getAllVocabularyByLessonID,
   createVocabulary,
@@ -34,18 +34,24 @@ const ListVocabulariesForCreate = (props) => {
   };
 
   const handleSubmit = async () => {
-    const idsToCreate = dataListVocabulariesForCreate.map((item) => item.id);
-    const postCreateLesson = await createNewLesson(dataLesson, userData.id);
-    if (postCreateLesson) {
-      const lessonId = postCreateLesson.id;
-      for (const item of dataListVocabulariesForCreate) {
-        const { value_en, value_vi } = item;
-        await createVocabulary(value_en, value_vi, lessonId);
+    if (dataListVocabulariesForCreate.length === 0) {
+      message.warning("Please create at least 1 vocabulary word");
+    } else if (!dataLesson || dataLesson == null || dataLesson.length == 0) {
+      message.warning("Please input your lesson name");
+    } else {
+      const idsToCreate = dataListVocabulariesForCreate.map((item) => item.id);
+      const postCreateLesson = await createNewLesson(dataLesson, userData.id);
+      if (postCreateLesson) {
+        const lessonId = postCreateLesson.id;
+        for (const item of dataListVocabulariesForCreate) {
+          const { value_en, value_vi } = item;
+          await createVocabulary(value_en, value_vi, lessonId);
+        }
       }
-    }
 
-    let result = convertSlug(postCreateLesson.name);
-    navigate(`/lesson/${result}?id=${postCreateLesson.id}`);
+      let result = convertSlug(postCreateLesson.name);
+      navigate(`/lesson/${result}?id=${postCreateLesson.id}`);
+    }
   };
 
   const handleChangeInput = (e, index) => {

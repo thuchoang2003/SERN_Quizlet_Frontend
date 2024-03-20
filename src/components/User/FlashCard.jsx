@@ -146,7 +146,7 @@ const FlashCard = (props) => {
               type="text"
               onClick={handlePrevCard}
             />
-            <span>
+            <span className="countCurrent">
               {currentCard + 1}/{listVocabulary.length}
             </span>
             <Button

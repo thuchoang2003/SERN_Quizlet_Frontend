@@ -78,3 +78,87 @@
     }
   }
 }
+@media only screen and (max-width: 523px) {
+  .container-lessonComponent {
+    max-width: 1440px;
+    margin: 0px 0px 0px 5%;
+    padding-top: 10px;
+    //   background-color: "#f6f7fb";
+    .title {
+      font-size: 1rem;
+    }
+    .lessonComponent-listItems {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #f6f7fb;
+      padding-top: 10px;
+      flex-wrap: nowrap;
+      gap: 20px;
+      overflow-x: auto;
+      padding-left: 2px;
+      .lessonComponent-item {
+        width: 80%;
+        flex: 0 0 auto;
+        border-radius: 1rem;
+        cursor: pointer;
+        // padding: 20px 15px 10px 0px;
+        box-shadow: 0 0 0 1.5px #cccc;
+        background-color: white;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .lessonComponent-item__header {
+          .label {
+            span {
+              font-size: 1rem;
+            }
+          }
+          .count {
+            span {
+              padding: 5px;
+              margin-top: 10px;
+              font-size: 0.8rem;
+              display: block;
+
+              width: fit-content;
+              border-radius: 10px;
+              background-color: #edefff;
+            }
+          }
+        }
+        .lessonComponent-item__footer {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          .image {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            border-radius: 50%;
+            img {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              left: 0;
+              right: 0;
+              object-fit: cover;
+              object-position: center;
+              border-radius: 50%;
+            }
+          }
+          .username {
+            span {
+            }
+          }
+        }
+      }
+      .lessonComponent-item:hover {
+        border-bottom: 0.2rem solid #a8b1ff;
+      }
+    }
+  }
+}
