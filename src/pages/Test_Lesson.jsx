@@ -278,10 +278,17 @@ const Test_Lesson = (props) => {
                     0,
                     listResult.length / 3
                   );
-                  const randomValueVi = getRandomElementWithBias(
+                  let randomValueVi = getRandomElementWithBias(
                     index,
                     partialListResult
                   );
+                  if (
+                    randomValueVi == null ||
+                    randomValueVi == undefined ||
+                    randomValueVi == ""
+                  ) {
+                    randomValueVi = item.value_vi;
+                  }
                   // const questionId = `question-${index + 1}`;
                   const questionId = item.id;
                   answerRandomByVerson1.push(randomValueVi);
